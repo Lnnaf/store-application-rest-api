@@ -4,14 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import vn.lyn.store.application.Enum.ProductItemModelType;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Date;
+import java.util.List;
 
-@Entity
+@Entity(name = "PRODUCT_ITEM")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -22,5 +20,22 @@ public class ProductItemEntity {
     private Long id;
     private String name;
     private String brand;
-    private ProductItemModelType modelType;
+
+    @OneToOne()
+    @JoinColumn(name = "product_type_id", referencedColumnName = "id")
+    private ProductTypeEntity productType;
+
+    private Date mfgDate;
+    private Long price;
+    private String description;
+    private Boolean isFreeDelivery;
+
+    @OneToMany()
+    @Column(name = "product_item_size")
+    private List<SizeEntity> sizeCollections;
+
+    private Boolean isAvailable;
+    private int amount;
+    private String color;
+
 }

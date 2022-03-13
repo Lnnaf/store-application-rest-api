@@ -78,11 +78,11 @@ public class CustomerController {
         CustomerEntity customerResult = customerService.update(customerConverted);
         String message = "";
         if(customerResult.equals(customerConverted)){
-            message = "";
+            message = "updated!";
             return new ResponseEntity<>(new StatusModifyResponse(new Date(), StatusModify.S, message), HttpStatus.OK);
         }else {
-            message
-            return new ResponseEntity<>(new StatusModifyResponse(new Date(), StatusModify.S, message), HttpStatus.OK);
+            message = "Error!";
+            return new ResponseEntity<>(new StatusModifyResponse(new Date(), StatusModify.E, message), HttpStatus.OK);
         }
 
     }

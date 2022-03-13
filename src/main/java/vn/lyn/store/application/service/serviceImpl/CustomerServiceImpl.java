@@ -35,7 +35,7 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public CustomerEntity update(CustomerEntity entity) {
-        customerEntityDao.save(entity);
+        return customerEntityDao.save(entity);
     }
 
 
